@@ -8,17 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var message = ""
+    @State private var imageName = ""
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Spacer()
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 45))
+                .shadow(radius: 50)
+            
+            
+            Text(message)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
+            Spacer()
+            
+            Button("Press Me!") {
+                let message1 = "You are Awesome!"
+                let message2 = "You are Great!"
+                
+                
+                
+                message = ( message == message1 ? message2 :message1)
+                imageName = ( imageName == "photo4" ? "photo6" : "photo4")
+            }
+            
+            .buttonStyle(.borderedProminent)
+            .font(.title2)
+            
+            
         }
+        
         .padding()
     }
 }
 
-#Preview {
+  #Preview {
     ContentView()
 }
